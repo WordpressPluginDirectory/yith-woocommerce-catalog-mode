@@ -399,7 +399,7 @@ if ( ! class_exists( 'YITH_WooCommerce_Catalog_Mode' ) ) {
 				if ( in_array( current_filter(), array( 'wp_get_nav_menu_items', 'wp_nav_menu_objects' ), true ) ) {
 					$page_id = isset( $page->object_id ) ? $page->object_id : 0;
 
-					if ( 'page' !== $page->object || 0 === $page_id ) {
+					if ( ( isset( $page->object ) && 'page' !== $page->object ) || 0 === $page_id ) {
 						continue;
 					}
 				} else {
@@ -762,6 +762,8 @@ if ( ! class_exists( 'YITH_WooCommerce_Catalog_Mode' ) ) {
 
 				$args = array(
 					'form.cart button.single_add_to_cart_button',
+					'.ppc-button-wrapper',
+					'.wc-ppcp-paylater-msg__container'
 				);
 
 				if ( ! class_exists( 'YITH_YWRAQ_Frontend' ) || ( ( class_exists( 'YITH_Request_Quote_Premium' ) ) && ! YITH_Request_Quote_Premium()->check_user_type() ) ) {
