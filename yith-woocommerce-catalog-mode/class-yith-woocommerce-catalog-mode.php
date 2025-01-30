@@ -70,8 +70,6 @@ if ( ! class_exists( 'YITH_WooCommerce_Catalog_Mode' ) ) {
 		 */
 		public function __construct() {
 
-			// Load Plugin Framework.
-			add_action( 'plugins_loaded', array( $this, 'plugin_fw_loader' ), 15 );
 
 			// Add action links.
 			add_filter( 'plugin_action_links_' . plugin_basename( YWCTM_DIR . '/' . basename( YWCTM_FILE ) ), array( $this, 'action_links' ) );
@@ -968,26 +966,6 @@ if ( ! class_exists( 'YITH_WooCommerce_Catalog_Mode' ) ) {
 					}
 				</style>
 				<?php
-			}
-		}
-
-		/**
-		 * YITH FRAMEWORK
-		 */
-
-		/**
-		 * Load plugin framework
-		 *
-		 * @return  void
-		 * @since   1.0.0
-		 */
-		public function plugin_fw_loader() {
-			if ( ! defined( 'YIT_CORE_PLUGIN' ) ) {
-				global $plugin_fw_data;
-				if ( ! empty( $plugin_fw_data ) ) {
-					$plugin_fw_file = array_shift( $plugin_fw_data );
-					require_once $plugin_fw_file;
-				}
 			}
 		}
 
